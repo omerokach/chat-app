@@ -1,15 +1,18 @@
 import './App.css';
-import socketIo from 'socket.io'
-const http = require('http');
-let server = http.createServer(app);
-let io = socketIo(server)
+import React, {useState} from 'react'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Join from './components/join/Join';
+import Chat from './components/Chat/Chat';
 
 function App() {
+
   return (
-    <div className="App">
-      <h1>chat app</h1>
-      {io()}
-    </div>
+ <Router>
+   <Switch>
+   <Route exact path='/' component={Join} />
+   <Route exact path='/chat' component={Chat}/>
+   </Switch>
+ </Router>
   );
 }
 
